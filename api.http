@@ -1,0 +1,59 @@
+### Ping server request
+GET http://localhost:8080
+
+### Login
+POST http://localhost:8080/login
+Content-Type: application/json
+
+{
+    "userName": "user1",
+    "password": "qweqwe"
+}
+
+> {% client.global.set("jwtToken", response.body.token); %}
+
+### Get users
+GET http://localhost:8080/users
+Authorization: Bearer {{jwtToken}}
+
+### Add new user
+POST http://localhost:8080/users
+Content-Type: application/json
+
+{
+    "userName": "user22",
+    "password": "secret"
+}
+
+
+### Create new CV
+POST http://localhost:8080/cvs
+Content-Type: application/json
+Authorization: Bearer {{jwtToken}}
+
+{
+  "name": "user1",
+  "email": "user1@gmail.com",
+  "mobile": "090934235",
+  "github": "github.com/user1",
+  "linkedln": "linkedln.com/user1",
+  "description": "description",
+  "jobTitle": "",
+  "company": "",
+  "period": "",
+  "jobDescription": "",
+  "university": "",
+  "faculty": "",
+  "gpa": "",
+  "skills": ""
+}
+
+### Get CVs
+GET http://localhost:8080/cvs
+Content-Type: application/json
+Authorization: Bearer {{jwtToken}}
+
+### Delete CVs
+DELETE http://localhost:8080/cvs/1
+Content-Type: application/json
+Authorization: Bearer {{jwtToken}}

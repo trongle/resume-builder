@@ -1,0 +1,1 @@
+export const getUrlHash = () => document.location.hash.replace('#', '')
